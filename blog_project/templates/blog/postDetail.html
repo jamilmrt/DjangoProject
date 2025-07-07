@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title mb-0">{{ post.title }}</h1>
+            <small class="text-muted">By {{ post.author.username }} on {{ post.created_at|date:"F d, Y, P" }}</small>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ post.body|linebreaksbr }}</p>
+            {% if user.is_authenticated and user == post.author %}
+                <hr>
+                <a href="{% url 'postUpdate' post.pk %}" class="btn btn-warning">Edit Post</a>
+                <a href="{% url 'postDelete' post.pk %}" class="btn btn-danger ms-2">Delete Post</a>
+            {% endif %}
+        </div>
+        <div class="card-footer text-muted">
+            <a href="{% url 'postList' %}" class="btn btn-secondary">Back to all posts</a>
+        </div>
+    </div>
+{% endblock %}

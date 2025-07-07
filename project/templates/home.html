@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Welcome to the Blog</h1>
+<p>This is the home page of the blog.</p>
+<p>Here you can find the latest posts and updates.</p>
+<p>Feel free to explore and read the articles.</p>
+<p>Don't forget to check out the <a href="{% url 'about' %}">About</a> page to learn more about us.</p>
+<p>For any inquiries, visit the <a href="{% url 'contact' %}">Contact</a> page.</p>
+<p>Stay tuned for more updates!</p>
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <p>&copy; 2023 My Blog. All rights reserved.</p>
+    <p>Follow us on <a href="https://twitter.com/myblog">Twitter</a> and <a href="https://facebook.com/myblog">Facebook</a>.</p>
+</footer>
+{% endblock %}

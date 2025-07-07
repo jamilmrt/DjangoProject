@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block start %}
+    
+<div class="container">
+    <h2>Survey</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+        <div class="card" style="margin-top: 20px;">
+            <div class="card-content">
+                <span class="card-title">
+                    {{question.question}}
+                </span>
+                {% if question.question_type == 'Text' %}
+                <div class="input-field">
+                    <input type="text" name="response_{{question.id}}" class="validate" placeholder="Enter your response">
+                </div>
+                {% elif question.question_type == 'Bigtext' %}
+                <div class="input-field">
+                    <textarea name="response {{question.id}}" class="materialize-textarea" placeholder="Enter your detailed response"></textarea>
+                </div>
+                {% elif question.question_type == 'radio' %}
+                {% for choice in question.choices %}
+                <p>
+                    <label>
+                        <input type="radio" name="response {{question.id}}" value="{{choice.choice}}">
+                        <span>{{choice.choice}}</span>
+                    </label>
+                </p>
+                {% endfor %}
+                {% elif question.question_type == 'checkbox' %}
+                {% for choice in question.choices %}
+                <p>
+                    <label>
+                        <input type="checkbox" name="response {{question.id}}" value="{{choice.choice}}">
+                        <span>{{choice.choice}}</span>
+                    </label>  
+                </p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+    </form>
+</div>
+{% endblock start %}

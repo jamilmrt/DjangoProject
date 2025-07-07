@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h2>You have been logged out.</h2>
+    {% csrf_token %}
+    <a href="{% url 'postList' %}" class="btn btn-primary mt-3">Return to Home</a>
+</div>
+{% endblock %}

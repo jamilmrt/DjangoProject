@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Welcome to the Blog</h1>
+<p>This is the Register page of the blog.</p>
+<form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="mb-3">
+        <label for="confirm_password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <p>&copy; 2023 My Blog. All rights reserved.</p>
+    <p>Follow us on <a href="https://twitter.com/myblog">Twitter</a> and <a href="https://facebook.com/myblog">Facebook</a>.</p>
+</footer>
+{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7fN4w9z6b5e5c5d5e5f5g5h5i5j5k5l5m5n5o5p5q5r5s5t5u5v5w5x5y5z5A5B5C5D5E5F5G5H5I5J5K5L5M5N5O5P5Q5R5S5T5U5V5W5X5Y5Z5a5b5c5d5e5f5g5h5i5j5k5l5m5n5o5p5q5r5s5t5u5v5w5x5y5z" crossorigin="anonymous"></script>
+{% endblock %}

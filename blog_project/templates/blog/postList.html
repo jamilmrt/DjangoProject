@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Blog Posts</h1>
+
+    {% if posts %}
+        {% for post in posts %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'postDetail' post.pk %}" class="text-decoration-none">{{ post.title }}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">By {{ post.author.username }} on {{ post.created_at|date:"F d, Y" }}</h6>
+                    <p class="card-text">{{ post.body|truncatechars:200 }}</p>
+                    <a href="{% url 'postDetail' post.pk %}" class="btn btn-primary btn-sm">Read More</a>
+                    {% if user.is_authenticated and user == post.author %}
+                        <a href="{% url 'postUpdate' post.pk %}" class="btn btn-warning btn-sm ms-2">Edit</a>
+                        <a href="{% url 'postDelete' post.pk %}" class="btn btn-danger btn-sm ms-2">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="alert alert-info">No posts found. Why not <a href="{% url 'postCreate' %}">create one</a>?</p>
+    {% endif %}
+{% endblock %}

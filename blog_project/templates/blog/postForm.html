@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}Edit Post{% else %}Create New Post{% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">{% if form.instance.pk %}Edit Post{% else %}Create New Post{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <div class="form-text">{{ field.help_text }}</div>
+                {% endif %}
+                {% for error in field.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">
+            {% if form.instance.pk %}Update Post{% else %}Create Post{% endif %}
+        </button>
+        <a href="{% if form.instance.pk %}{% url 'postDetail' form.instance.pk %}{% else %}{% url 'postList' %}{% endif %}" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+{% endblock %}
