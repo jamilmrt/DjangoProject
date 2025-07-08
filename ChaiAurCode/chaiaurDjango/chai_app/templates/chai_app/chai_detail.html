@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Chai Detail Page
+{% endblock %}
+ 
+{% block styles %}
+<style>
+  /* Add any custom styles for the chai detail page here */
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="bg-purple-600 text-2xl font-bold mb-4" >Chai Detail Page</h1>
+
+<h3>{{ chai.name }}</h3>
+<img class='bg-amber-400 shadow-lg' src="{{ chai.image.url }}" alt="{{ chai.name }}">
+<p>Date Added: {{ chai.date_added }}</p>
+<p>Type: {{ chai.get_type_display }}</p>
+<h2>{{ chai.price }}</h2>
+<p>Description: {{ chai.description }}</p>
+
+{% endblock %}
+
