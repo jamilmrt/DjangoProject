@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Registration Page 
+{% endblock title %}
+
+{% block content %} 
+
+    {% if registered %}
+        <h1>Thank You for Registration</h1>
+    {% else %}
+    <h1>Registration Form</h1>
+    <form method="post" class="position-absolute mx-auto top-50 start-5px">
+        {% comment %} <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter username" class="form-control" required>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" class="form-control" required>
+        <br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" class="form-control" required>
+        <br>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="confirmPassword" id="confirmPassword" name="confirmPassword" placeholder="Enter confirm password" class="form-control" required>
+        <br> {% endcomment %}
+
+        {% csrf_token %}
+        {{user_form.as_p}}
+        <br>
+        {{profile_form.as_p}}
+        <button type="submit" value="Register" class="btn btn-primary btn-block">Register</button>
+    </form>
+    {% endif %}
+
+{% endblock content %}
