@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Standard List View 
+{% endblock title %}
+
+
+{% block content %} 
+    {% for standard in standards %}
+        <a href="{%  url 'curriculum:subject_list_view' standard.slug %}">{{ standard.name}}</a><br>
+        
+    {% endfor %}
+{% endblock content %} 

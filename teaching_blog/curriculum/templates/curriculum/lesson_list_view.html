@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Standard List View 
+{% endblock title %}
+
+{% block content %}
+{% for lession  in standard.subjects.all %}
+    <a href="">{{subject.name}}</a>
+
+{% endfor %}
+{% endblock content %}
