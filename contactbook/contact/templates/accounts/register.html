@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Register page
+{% endblock title %}
+
+{% block content %} 
+    <h1>Fill the Register Form </h1>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+        <p>Alredy have an account! <a href="{% url 'login' %}">Login</a></p>
+    </div>
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event as e) {
+            const username = document.getElementById("id_username").value.toLowerCase();
+            const email = document.getElementById("id_email").value.toLowerCase();
+            const password = document.getElementById("id_password").value.toLowerCase();
+             // Check if password is too similar to username or email
+            if (password.includes(username) || password.includes(email.split('@')[0])) {
+            alert("Password is too similar to your username or email!");
+            e.preventDefault(); // stop form submission
+        }
+    });
+
+    </script>
+{% endblock content %}

@@ -21,14 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t#*1qgb6bv95le=(5-l)0l&yrs#%+kv)-y3(vmbgxv^#o9mm*#'
+SECRET_KEY = 'django-insecure-*z4yokgvf(65(#11uo%kvl7lqm1flpgt00#(%bi0jkxu8_#ecw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-TAMPLATES_DIR = os.path.join(BASE_DIR,'templates')
-
+TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
 
 
 # Application definition
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'contactbook.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TAMPLATES_DIR],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +73,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'contactbook.wsgi.application'
-
 
 
 # Database

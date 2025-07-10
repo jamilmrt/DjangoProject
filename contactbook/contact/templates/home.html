@@ -1,11 +1,16 @@
 {% extends "base.html" %}
-
-{% block title %}
-    Home Of cntact Book
+ {% block title %}
+    Contact Book home page
 {% endblock title %}
 
+
 {% block content %}
-    <h1>Home Page</h1>
+<div class="container">
+    <div class="container2">
+        {% if User.name %}
+        <h1>{{User.name}}</h1>
+        {% endif %}
+    </div>
+</div>
+
 {% endblock content %}
-
-
