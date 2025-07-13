@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contact Details
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="detail">
+            <a href="{% url 'contactDetail' contact.pk %}">{{ contact.person_name }}</a>        </div>
+{% endblock content %}
+    <div class="container">

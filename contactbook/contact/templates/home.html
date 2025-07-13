@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h2>Welcome {{ request.user.username }}!</h2>
+                {% comment %} <p>You are logged in.</p> {% endcomment %}
+                {% comment %} <a href="{% url 'logout' %}">Logout</a> {% endcomment %}
+                {% for contact in allContact %}
+                    <a href="{% url 'contactDetail' contact.pk %}">{{ contact.person_name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %} 

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create contact
+{% endblock title %}
+
+{% block content  %}
+    <div class="container">
+        <h2>Add contact number</h2>
+        <div class="form-control">
+            <form method="post">
+                {% csrf_token %}
+                {{contactForm.as_p}}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock content  %}
+
+
